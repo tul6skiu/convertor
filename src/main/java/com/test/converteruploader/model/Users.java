@@ -1,17 +1,16 @@
 package com.test.converteruploader.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
-
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-public class Users {
+@Table(name = "user", schema = "converter")
+public class Users  {
     @Id
     private String Id;
     private String name;
@@ -21,6 +20,5 @@ public class Users {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "history_id", referencedColumnName = "id")
     private History history;
-
 
 }
