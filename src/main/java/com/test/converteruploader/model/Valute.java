@@ -36,9 +36,6 @@ public class Valute {
     @JsonProperty("Value")
     private String Value;
 
-
-//    private String date;
-
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="date", updatable = false, referencedColumnName = "date")
