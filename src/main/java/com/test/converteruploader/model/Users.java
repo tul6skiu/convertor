@@ -14,6 +14,7 @@ public class Users  {
     @Id
     private String Id;
     private String name;
+    private String email;
     private String password;
     private String activationCode;
 
