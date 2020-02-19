@@ -1,13 +1,17 @@
 package com.test.converteruploader;
 
+import com.test.converteruploader.model.ValCurs;
+import com.test.converteruploader.model.Valute;
+import com.test.converteruploader.service.ServiceCollectedValData;
+import com.test.converteruploader.service.ServiceGettingAndSaveData;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.BootstrapWith;
+import reactor.core.publisher.Mono;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.io.IOException;
+import java.util.List;
 
 @SpringBootTest
 @Parameterized.UseParametersRunnerFactory
@@ -15,9 +19,17 @@ public class ServiceCollectedValDataTest {
 
     @Autowired
     public ServiceCollectedValData serviceCollectedValData;
+    @Autowired
+    private ServiceGettingAndSaveData saveDataService;
 
     @Test
-    void gettingCurrencyData() {
-        serviceCollectedValData.gettingCurrencyData();
+    public void gettingCurrencyData()  throws IOException {
+
+        Mono<String> result = serviceCollectedValData.gettingCurrencyData();
+        ValCurs val = serviceCollectedValData.whenJavaGotFromXmlStr(result.block());
+        List<Valute> valute = val.getValute();
+        System.out.println(val);
+        saveDataService.ValCursSave(val);
+//        saveDataService.ValuteSave(valute);
     }
 }

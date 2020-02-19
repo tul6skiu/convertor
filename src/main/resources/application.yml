@@ -1,0 +1,39 @@
+spring:
+  datasource:
+    hikari:
+      connection-timeout: 60000
+    password: 5897121994g
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: create
+      use-new-id-generator-mappings: true
+    open-in-view: true
+    properties:
+      hibernate:
+        default_schema: converter
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
+        order_inserts: true
+        order_updates: true
+        generate_statistics: false
+        jdbc:
+          batch_size: 100000
+          lob:
+            non_contextual_creation: true
+        temp:
+          use_jdbc_metadata_defaults: false
+    show-sql: true
+
+
+# authorization by email address/
+#spring.mail.host=smtp.gmail.com
+##spring.mail.username=tulaa478@gmail.com
+##spring.mail.password=5897121994g
+##spring.mail.port=587
+##spring.mail.protocol=smtp
+##spring.mail.properties.mail.smtp.auth=true
+##spring.mail.properties.mail.smtp.starttls.enable=true
+##spring.main.allow-bean-definition-overriding =true
+##spring.mail.properties.mail.smtp.starttls.required=true
+##mail.debug=true

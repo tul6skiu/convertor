@@ -6,11 +6,11 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.sql.Date;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class ValCursId implements Serializable {
-    private Date date;
-    private String name;
-}
+//
+//@Data
+//@NoArgsConstructor
+//@AllArgsConstructor
+//public class ValCursId implements Serializable {
+//    private String date;
+//    private String name;
+//}

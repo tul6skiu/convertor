@@ -1,36 +1,46 @@
 package com.test.converteruploader.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlCData;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import java.sql.Date;
 import java.util.List;
 
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@IdClass(ValCursId.class)
 @Table(name = "val_curs", schema = "converter")
-//@XmlRootElement(name="ValCurs", namespace="ForeignCurrencyMarket")
-//@XmlAccessorType(XmlAccessType.FIELD)
 public class ValCurs {
     @Id
-    private Date date;
-    @Id
+    @JsonProperty("Date")
+    private String date;
+
+    public void setDate(String date) {
+
+        this.date = date;
+    }
+
+    @JsonProperty("name")
     private String name;
 
-    @OneToMany
-    @JoinColumn(name = "date")
-    private List<Valute> valutes;
 
-    public ValCurs(List<Valute> valutes) {
-        this.valutes = valutes;
+    @JsonManagedReference
+    @JacksonXmlProperty(localName = "Valute")
+    @JacksonXmlCData
+    @JacksonXmlElementWrapper(useWrapping = false)
+    @OneToMany(mappedBy = "valCurs", cascade = CascadeType.ALL)
+    private List<Valute> valute;
+
+    public ValCurs(List<Valute> valute) {
+        this.valute = valute;
     }
+
+
 }
