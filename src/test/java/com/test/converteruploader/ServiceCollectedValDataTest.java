@@ -1,7 +1,7 @@
 package com.test.converteruploader;
 
-import com.test.converteruploader.model.ValCurs;
-import com.test.converteruploader.model.Valute;
+import com.test.converteruploader.model.entity.ValCurs;
+import com.test.converteruploader.model.entity.Valute;
 import com.test.converteruploader.service.ServiceCollectedValData;
 import com.test.converteruploader.service.ServiceGettingAndSaveData;
 import org.junit.jupiter.api.Test;

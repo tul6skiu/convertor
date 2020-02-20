@@ -1,4 +1,4 @@
-package com.test.converteruploader.model;
+package com.test.converteruploader.model.entity;
 
 import lombok.*;
 

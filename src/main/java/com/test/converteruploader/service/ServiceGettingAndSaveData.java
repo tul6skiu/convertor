@@ -1,10 +1,9 @@
 package com.test.converteruploader.service;
 
-import com.test.converteruploader.model.ValCurs;
-import com.test.converteruploader.model.Valute;
+import com.test.converteruploader.model.entity.ValCurs;
+import com.test.converteruploader.model.entity.Valute;
 import com.test.converteruploader.repository.ValCursRepository;
 import com.test.converteruploader.repository.ValuteRepository;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

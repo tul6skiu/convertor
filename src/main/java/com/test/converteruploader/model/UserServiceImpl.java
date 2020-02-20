@@ -1,5 +1,7 @@
 package com.test.converteruploader.model;
 
+import com.test.converteruploader.model.entity.Users;
+import com.test.converteruploader.repository.UserRepository;
 import io.micrometer.core.instrument.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -20,11 +22,8 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     }
 
     private UserRepository userRepository;
-
     private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-
-  private MailSender mailSender;
+    private MailSender mailSender;
 
 
     @Override
@@ -46,9 +45,8 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         user.setActivationCode(UUID.randomUUID().toString());
         userRepository.save(user);
         if (!StringUtils.isEmpty(user.getEmail())) {
-            System.out.println("отправил смс");
             String message = String.format(
-                    "Hello ,%s! \n" + "Welcom to Tasker. Please, visit next link: http://localhost:8080/activate/%s",
+                    "Hello ,%s! \nWelcom to Converter. Please, visit next link:" + "http://localhost:8080/activate/%s",
                     user.getEmail(),
                     user.getActivationCode()
             );
@@ -57,7 +55,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         return true;
     }
 
-    public boolean acivateUser(String code) {
+    public boolean isActivateUser(String code) {
         Users userDto =  userRepository.findByActivationCode(code);
 
         if (userDto == null) {
@@ -72,6 +70,6 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        return (UserDetails) userRepository.findByEmail(s);
+        return userRepository.findByEmail(s);
     }
 }

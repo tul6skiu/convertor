@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" id="bootstrap-css"
+          rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h2>Hi <span></span>, Добро пожаловать на лучший Конвертер валют</h2>
+    <form  class="col-sm-9" method="POST" role="form" th:action="@{/convert}" th:object="${converter}">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="inputState">State</label>
+                    <select id="inputState" class="form-control" required th:field="*{currentName}">
+                        <option th:each="test : ${valutName}"
+                                th:value="${test.getName()}"
+                                th:text="${test.getName()}">
+                        </option>
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <label for="inputState2">State</label>
+                    <select id="inputState2" class="form-control" required th:field="*{sourceName}">
+                        <option th:each="test : ${valutName}"
+                                th:value="${test.getName()}"
+                                th:text="${test.getName()}">
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6">
+                    <label class="control-label">amount</label>
+                    <input autofocus class="form-control" id="count" placeholder="count"
+                           required th:field="*{count}" type="text">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-12">
+                    <button class="fa fa-convertRequest-plus" type="submit" >КОНВЕРТИРОВАТЬ</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="col-sm-6">
+        <label for="inputState3">State</label>
+        <select id="inputState3" class="form-control" required th:field="*{result}">
+
+        </select>
+    </div>
+    <a th:href="@{/logout}">Sign out</a>
+</div>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package com.test.converteruploader.model;
+package com.test.converteruploader.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -9,9 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import java.math.BigDecimal;
 
 @AllArgsConstructor
 @NoArgsConstructor

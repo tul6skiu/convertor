@@ -1,22 +1,17 @@
 package com.test.converteruploader.service;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.test.converteruploader.model.ValCurs;
-import com.test.converteruploader.model.Valute;
+import com.test.converteruploader.model.entity.ValCurs;
+import com.test.converteruploader.model.entity.Valute;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.util.UriBuilder;
 import reactor.core.publisher.Mono;
 
 
-import javax.xml.stream.XMLStreamReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 

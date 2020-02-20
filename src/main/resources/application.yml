@@ -1,4 +1,23 @@
+# authorization by email address
+mail:
+  debug: true
 spring:
+  mail:
+    port: 587
+    password: 5897121994g
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    protocol: smtp
+    username: tulaa478@gmail.com
+    host: smtp.gmail.com
+  main:
+    allow-bean-definition-overriding: true
+
   datasource:
     hikari:
       connection-timeout: 60000
@@ -24,16 +43,3 @@ spring:
         temp:
           use_jdbc_metadata_defaults: false
     show-sql: true
-
-
-# authorization by email address/
-#spring.mail.host=smtp.gmail.com
-##spring.mail.username=tulaa478@gmail.com
-##spring.mail.password=5897121994g
-##spring.mail.port=587
-##spring.mail.protocol=smtp
-##spring.mail.properties.mail.smtp.auth=true
-##spring.mail.properties.mail.smtp.starttls.enable=true
-##spring.main.allow-bean-definition-overriding =true
-##spring.mail.properties.mail.smtp.starttls.required=true
-##mail.debug=true
