@@ -41,6 +41,4 @@ public class ValCurs {
     public ValCurs(List<Valute> valute) {
         this.valute = valute;
     }
-
-
 }

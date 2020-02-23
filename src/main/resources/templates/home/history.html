@@ -6,28 +6,27 @@
 </head>
 <body>
 <div class="col-sm-6">
-    <table>
+    <table  class="table">
         <thead>
         <tr>
-            <th> Исходная валюта </th>
-            <th> Исходная сумма </th>
-            <th> Получаемая валюта </th>
-            <th> Получаемая сумма </th>
-            <th> Дата </th>
+            <th scope="col"> Исходная валюта </th>
+            <th scope="col"> Исходная сумма </th>
+            <th scope="col"> Получаемая валюта </th>
+            <th scope="col"> Получаемая сумма </th>
+            <th scope="col"> Дата </th>
             <th> Имя пользователя </th>
         </tr>
         </thead>
         <tbody>
         <tr th:if="${page}">
-            <td colspan="2"> No Books Available </td>
         </tr>
-        <tr th:each="book : ${page}">
-            <td><span th:text="${book.sourceCur}"> Исходная валюта </span></td>
-            <td><span th:text="${book.sourceValue}"> Исходная сумма </span></td>
-            <td><span th:text="${book.targetCur}"> Получаемая валюта </span></td>
-            <td><span th:text="${book.targetValue}"> Получаемая сумма </span></td>
-            <td><span th:text="${book.date}"> Дата </span></td>
-            <td><span th:text="${book.userName}"> Имя пользователя </span></td>
+        <tr th:each="val : ${page}">
+            <td><span th:text="${val.sourceCur}" > Исходная валюта </span></td>
+            <td><span th:text="${val.sourceValue}"> Исходная сумма </span></td>
+            <td><span th:text="${val.targetCur}"> Получаемая валюта </span></td>
+            <td><span th:text="${val.targetValue}"> Получаемая сумма </span></td>
+            <td><span th:text="${val.date}"> Дата </span></td>
+            <td><span th:text="${val.userName}"> Имя пользователя </span></td>
         </tr>
         </tbody>
     </table>

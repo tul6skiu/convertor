@@ -30,6 +30,6 @@ public class ServiceCollectedValDataTest {
         List<Valute> valute = val.getValute();
         System.out.println(val);
         saveDataService.ValCursSave(val);
-//        saveDataService.ValuteSave(valute);
+
     }
 }

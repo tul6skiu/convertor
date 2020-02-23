@@ -14,18 +14,23 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity
 @Table(name = "history", schema = "converter")
+@IdClass(HistoryId.class)
 public class History {
     @Id
     private UUID id;
+    @Id
     private String sourceCur;
+    @Id
     private String targetCur;
+    @Id
     private Integer sourceValue;
+    @Id
     private BigDecimal targetValue;
     private String userName;
     private LocalDate date;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "history_id", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="history_id", updatable = false, referencedColumnName = "id")
     private Valute valute;
 
 }

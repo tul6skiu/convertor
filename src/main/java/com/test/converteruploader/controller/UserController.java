@@ -20,14 +20,10 @@ import org.springframework.web.servlet.ModelAndView;
 import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
-import java.awt.print.Pageable;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.*;
 
 import static java.lang.Double.parseDouble;
 
@@ -120,7 +116,7 @@ public class UserController {
                     }
                     return null;
                 });
-        cursRepo.save(currentValutes.block());
+        cursRepo.save(Objects.requireNonNull(currentValutes.block()));
         List<Valute> valutes = valuteRepo.findAll();
 
         model.addObject("converter", new ConvertRequest());
@@ -151,17 +147,7 @@ public class UserController {
         return "result";
     }
 
-//    @GetMapping("/home/history")
-//    private ModelAndView history() {
-//        ModelAndView model = new ModelAndView();
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//
-//        List<History> history = historyRepo.findAllByUserName(auth.getName());
-//
-//        model.addObject("page" , historyRepo.findAllByUserName(auth.getName()));
-//        model.setViewName("home/history");
-//        return model;
-//    }
+
     @RequestMapping("/home/history")
     public String list(ModelMap model){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -173,7 +159,7 @@ public class UserController {
     }
 
 
-    private void createdHistoryAndSave(ConvertRequest item,BigDecimal countResult, Authentication auth,  Valute valute) {
+    private void createdHistoryAndSave(ConvertRequest item,BigDecimal countResult, Authentication auth, Valute valute) {
 
         History history = new History();
 
@@ -185,9 +171,7 @@ public class UserController {
         history.setDate(LocalDate.now());
         history.setUserName(auth.getName());
         history.setValute(valute);
+
         historyRepo.save(history);
     }
-
-
-
 }

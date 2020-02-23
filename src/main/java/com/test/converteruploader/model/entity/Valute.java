@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,7 +18,6 @@ import javax.persistence.*;
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
 @ToString(exclude = "valCurs")
-
 public class Valute {
     @Id
     @JsonProperty("ID")
@@ -38,8 +38,8 @@ public class Valute {
     @JoinColumn(name="date", updatable = false, referencedColumnName = "date")
     private ValCurs valCurs;
 
-    @OneToOne(mappedBy = "valute")
-    private History history;
+    @OneToMany(mappedBy = "valute", cascade = CascadeType.ALL)
+    private List<History> history;
 
 
 }
