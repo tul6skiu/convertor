@@ -37,3 +37,12 @@
  psql 
  CREATE SCHEMA converter;
  ```
+6. Укажите в application.yml:
+```
+datasource:
+    hikari:
+      connection-timeout: 60000
+    username: foobar
+    password: foobar
+    url: jdbc:postgresql://localhost:5432/foobar
+ ```
