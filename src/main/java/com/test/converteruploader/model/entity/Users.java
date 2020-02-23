@@ -20,9 +20,9 @@ public class Users implements UserDetails {
     private String password;
     private String activationCode;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "history_id", referencedColumnName = "id")
-    private History history;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "history_id", referencedColumnName = "id")
+//    private History history;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

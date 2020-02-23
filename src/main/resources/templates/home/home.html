@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -10,7 +9,7 @@
 </head>
 <body>
 <div class="container">
-    <h2>Hi <span></span>, Добро пожаловать на лучший Конвертер валют</h2>
+    <h2>Hi <span></span> Добро пожаловать на лучший Конвертер валют</h2>
     <form  class="col-sm-9" method="POST" role="form" th:action="@{/convert}" th:object="${converter}">
         <div class="form-group">
             <div class="row">
@@ -25,7 +24,7 @@
                 </div>
                 <div class="col-sm-6">
                     <label for="inputState2">State</label>
-                    <select id="inputState2" class="form-control" required th:field="*{sourceName}">
+                    <select id="inputState2" class="form-control" required th:field="*{targetName}">
                         <option th:each="test : ${valutName}"
                                 th:value="${test.getName()}"
                                 th:text="${test.getName()}">
@@ -37,12 +36,13 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-6">
-                    <label class="control-label">amount</label>
+                    <label class="control-label" id="selection">amount</label>
                     <input autofocus class="form-control" id="count" placeholder="count"
                            required th:field="*{count}" type="text">
                 </div>
             </div>
         </div>
+
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-12">
@@ -51,11 +51,16 @@
             </div>
         </div>
     </form>
-    <div class="col-sm-6">
-        <label for="inputState3">State</label>
-        <select id="inputState3" class="form-control" required th:field="*{result}">
-
-        </select>
+    <div class="container">
+    <form action="history.html" class="col-sm-9" method="GET" role="form" th:action="@{/home/history}">
+        <div class="form-group" >
+            <div class="row">
+                <div class="col-sm-12">
+                    <button class="fa fa-convertRequest-plus" type="submit" >История</button>
+                </div>
+            </div>
+        </div>
+    </form>
     </div>
     <a th:href="@{/logout}">Sign out</a>
 </div>

@@ -43,3 +43,5 @@ spring:
         temp:
           use_jdbc_metadata_defaults: false
     show-sql: true
+server:
+  port: 9713

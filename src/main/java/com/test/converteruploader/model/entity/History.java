@@ -2,12 +2,11 @@ package com.test.converteruploader.model.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.util.UUID;
 
 
 @Data
@@ -17,14 +16,16 @@ import java.sql.Date;
 @Table(name = "history", schema = "converter")
 public class History {
     @Id
-    private Long id;
+    private UUID id;
     private String sourceCur;
     private String targetCur;
     private Integer sourceValue;
     private BigDecimal targetValue;
-    private Date date;
+    private String userName;
+    private LocalDate date;
 
-    @OneToOne(mappedBy = "history")
-    private Users user;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "history_id", referencedColumnName = "id")
+    private Valute valute;
 
 }

@@ -45,6 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login").permitAll()
                 .antMatchers("/signup").permitAll()
                 .antMatchers("/activate/*").permitAll()
+                .antMatchers("/history").permitAll()
                 .antMatchers("/convert").permitAll()
                 .antMatchers("/home/**")
                 .authenticated().and().csrf().disable()

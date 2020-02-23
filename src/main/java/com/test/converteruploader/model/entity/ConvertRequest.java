@@ -12,6 +12,6 @@ import java.math.BigDecimal;
 public class ConvertRequest {
     private Integer count;
     private String currentName;
-    private String SourceName;
+    private String targetName;
     private BigDecimal result;
 }

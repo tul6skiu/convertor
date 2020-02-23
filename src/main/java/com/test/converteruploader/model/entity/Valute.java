@@ -29,7 +29,7 @@ public class Valute {
     @JsonProperty("Nominal")
     private Integer Nominal;
     @JsonProperty("Name")
-    private String Name;
+    private String name;
     @JsonProperty("Value")
     private String Value;
 
@@ -37,5 +37,9 @@ public class Valute {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="date", updatable = false, referencedColumnName = "date")
     private ValCurs valCurs;
+
+    @OneToOne(mappedBy = "valute")
+    private History history;
+
 
 }

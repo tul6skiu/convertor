@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="UTF-8">
+<head>
+    <title>Smoke Tests</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div class="col-sm-6">
+    <table>
+        <thead>
+        <tr>
+            <th> Исходная валюта </th>
+            <th> Исходная сумма </th>
+            <th> Получаемая валюта </th>
+            <th> Получаемая сумма </th>
+            <th> Дата </th>
+            <th> Имя пользователя </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${page}">
+            <td colspan="2"> No Books Available </td>
+        </tr>
+        <tr th:each="book : ${page}">
+            <td><span th:text="${book.sourceCur}"> Исходная валюта </span></td>
+            <td><span th:text="${book.sourceValue}"> Исходная сумма </span></td>
+            <td><span th:text="${book.targetCur}"> Получаемая валюта </span></td>
+            <td><span th:text="${book.targetValue}"> Получаемая сумма </span></td>
+            <td><span th:text="${book.date}"> Дата </span></td>
+            <td><span th:text="${book.userName}"> Имя пользователя </span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
