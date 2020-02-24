@@ -90,7 +90,7 @@ public class UserController {
     @GetMapping(value = {"/activate/{code}"})
     public ModelAndView activate(@PathVariable String code) {
         var model = new ModelAndView();
-        boolean isActivated = userService.isActivateUser(code);
+        boolean isActivated = userServiceImpl.isActivateUser(code);
 
         if (isActivated) {
             model.addObject("msg", "User successfully activated");
@@ -136,13 +136,18 @@ public class UserController {
     @PostMapping("/convert")
     public String greetingSubmit(@ModelAttribute ConvertRequest item, Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String findName = item.getCurrentName();
-        BigDecimal countResult;
-        Valute valute = valuteRepo.findValuteByName(findName);
+        String from = item.getCurrentName();
+        String to = item.getTargetName();
+        Valute fromValute = valuteRepo.findValuteByName(from);
+        Valute toValute = valuteRepo.findValuteByName(to);
 
-        double res = item.getCount() * parseDouble(valute.getValue().replace(",", "."));
-        countResult = BigDecimal.valueOf(res);
-        createdHistoryAndSave(item, countResult, auth, valute);
+        double res = from.equals(to) ?
+            item.getCount() :
+            item.getCount() * parseDouble(fromValute.getValue().replace(",", ".")) /
+                parseDouble(toValute.getValue().replace(",", "."));
+
+        BigDecimal countResult = BigDecimal.valueOf(res);
+        createdHistoryAndSave(item, countResult, auth, fromValute);
         model.addAttribute("result", countResult);
         return "result";
     }
