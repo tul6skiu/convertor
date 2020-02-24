@@ -4,7 +4,7 @@ mail:
 spring:
   mail:
     port: 587
-    password: 5897121994g
+    password: 5897121994f
     properties:
       mail:
         smtp:
@@ -13,7 +13,7 @@ spring:
             enable: true
             required: true
     protocol: smtp
-    username: tulaa478@gmail.com
+    username: test.convert22@gmail.com
     host: smtp.gmail.com
   main:
     allow-bean-definition-overriding: true
@@ -21,12 +21,12 @@ spring:
   datasource:
     hikari:
       connection-timeout: 60000
-    password: 5897121994g
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
+    password: foobar
+    url: jdbc:postgresql://localhost:5432/foobar
+    username: foobar
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create
       use-new-id-generator-mappings: true
     open-in-view: true
     properties:

@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         userRepository.save(user);
         if (!StringUtils.isEmpty(user.getEmail())) {
             String message = String.format(
-                    "Hello ,%s! \nWelcom to Converter. Please, visit next link:" + "http://localhost:8080/activate/%s",
+                    "Hello ,%s! \nWelcom to Converter. Please, visit next link:" + "http://localhost:9713/activate/%s",
                     user.getEmail(),
                     user.getActivationCode()
             );
